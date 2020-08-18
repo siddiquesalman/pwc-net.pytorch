@@ -28,4 +28,5 @@ class Correlation(nn.Module):
 				diff = (feata*featb)
 				cost[:, :, i,j,max(0,-indd):height-indd,max(0,-ind):width-ind]   = diff
 		cost = F.leaky_relu(cost, 0.1,inplace=True)
+		import pdb;pdb.set_trace()
 		return cost
