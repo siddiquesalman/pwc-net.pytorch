@@ -3,10 +3,10 @@ import numpy as np
 
 import torch
 
-from PWC_src import PWC_Net
+from PWCNet import PWCDCNet as PWC_Net
 from PWC_src import flow_to_image
 
-FLOW_SCALE = 20.0
+FLOW_SCALE = 1.0
 
 
 if __name__ == '__main__':
@@ -17,16 +17,17 @@ if __name__ == '__main__':
     im2 = torch.from_numpy((im2/255.).astype(np.float32)).permute(2, 0, 1).unsqueeze(0)
     im1_v = im1.cuda()
     im2_v = im2.cuda()
-
+    B,C,W,H = im1.shape
     # Build model
-    pwc = PWC_Net(model_path='models/sintel.pytorch')
+    pwc = PWC_Net([B,W,H])
     #pwc = PWC_Net(model_path='models/chairs-things.pytorch')
     pwc = pwc.cuda()
     pwc.eval()
 
     import time
     start = time.time()
-    flow = FLOW_SCALE*pwc(im1_v, im2_v)
+    flow = FLOW_SCALE*pwc(torch.cat([im1_v, im2_v],0))
+    import pdb;pdb.set_trace()
     print(time.time()-start)
     flow = flow.data.cpu()
     flow = flow[0].numpy().transpose((1,2,0))
