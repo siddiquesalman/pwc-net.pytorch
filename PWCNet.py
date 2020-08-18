@@ -232,7 +232,7 @@ class PWCDCNet(nn.Module):
         import pdb;pdb.set_trace()
         up_flow6 = self.deconv6(flow6)
         up_feat6 = self.upfeat6(x)
-
+        import pdb;pdb.set_trace()
         
         warp5 = self.warp5(c25, up_flow6*0.625)
         corr5 = self.corr(c15, warp5) 
@@ -246,7 +246,7 @@ class PWCDCNet(nn.Module):
         flow5 = self.predict_flow5(x)
         up_flow5 = self.deconv5(flow5)
         up_feat5 = self.upfeat5(x)
-
+        import pdb;pdb.set_trace()
        
         warp4 = self.warp4(c24, up_flow5*1.25)
         corr4 = self.corr(c14, warp4)  
