@@ -69,6 +69,7 @@ class WarpModule(nn.Module):
 
         """
         B, C, H, W = x.size()
+        import pdb;pdb.set_trace()
         vgrid = self.grid + flo
 
         # scale grid to [-1,1] 
