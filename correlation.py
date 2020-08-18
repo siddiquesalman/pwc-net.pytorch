@@ -16,9 +16,9 @@ class Correlation(nn.Module):
 		"""
 		b,c,height,width = refimg_fea.shape
 		if refimg_fea.is_cuda:
-			cost = Variable(torch.cuda.FloatTensor(b,c,2*maxdisp+1,2*int(maxdisp//1)+1,height,width)).fill_(0.) # b,c,u,v,h,w
+			cost = Variable(torch.cuda.FloatTensor(b,c,2*self.maxdisp+1,2*int(self.maxdisp//1)+1,height,width)).fill_(0.) # b,c,u,v,h,w
 		else:
-			cost = Variable(torch.FloatTensor(b,c,2*maxdisp+1,2*int(maxdisp//1)+1,height,width)).fill_(0.) # b,c,u,v,h,w
+			cost = Variable(torch.FloatTensor(b,c,2*self.maxdisp+1,2*int(self.maxdisp//1)+1,height,width)).fill_(0.) # b,c,u,v,h,w
 		for i in range(2*self.maxdisp+1):
 			ind = i-self.maxdisp
 			for j in range(2*int(self.maxdisp//1)+1):
