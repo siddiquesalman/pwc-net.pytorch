@@ -30,7 +30,7 @@ if __name__ == '__main__':
 	input = torch.cat([im1_v, im2_v],0)
 	# import pdb;pdb.set_trace()
 	flow = FLOW_SCALE*pwc(input)[0]
-	# import pdb;pdb.set_trace()
+	import pdb;pdb.set_trace()
 	print(time.time()-start)
 	flow = flow.data.cpu()
 	flow = flow[0].numpy().transpose((1,2,0))
