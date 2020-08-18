@@ -18,7 +18,7 @@ if __name__ == '__main__':
 	im1_v = im1.cuda()
 	im2_v = im2.cuda()
 	B,C,H,W = im1.shape
-	import pdb;pdb.set_trace()
+	# import pdb;pdb.set_trace()
 	# Build model
 	pwc = PWC_Net([B,W,H])
 	#pwc = PWC_Net(model_path='models/chairs-things.pytorch')
@@ -28,9 +28,9 @@ if __name__ == '__main__':
 	import time
 	start = time.time()
 	input = torch.cat([im1_v, im2_v],0)
-	import pdb;pdb.set_trace()
+	# import pdb;pdb.set_trace()
 	flow = FLOW_SCALE*pwc(input)[0]
-	import pdb;pdb.set_trace()
+	# import pdb;pdb.set_trace()
 	print(time.time()-start)
 	flow = flow.data.cpu()
 	flow = flow[0].numpy().transpose((1,2,0))
