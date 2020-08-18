@@ -11,7 +11,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from .correlation_package import correlation
+from correlation import*
 
 
 class Extractor(nn.Module):
@@ -118,7 +118,7 @@ class Decoder(nn.Module):
         if intLevel < 6: self.dblBackward = [None, None, None, 5.0, 2.5, 1.25, 0.625, None ][intLevel+1]
         if intLevel < 6: self.moduleBackward = Backward()
 
-        self.moduleCorrelation = correlation.Correlation()
+        self.moduleCorrelation = Correlation(4)
         self.moduleCorreleaky = nn.LeakyReLU(inplace=False, negative_slope=0.1)
 
         self.moduleOne = nn.Sequential(
