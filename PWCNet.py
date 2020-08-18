@@ -229,6 +229,7 @@ class PWCDCNet(nn.Module):
         x = torch.cat((self.conv6_3(x), x),1)
         x = torch.cat((self.conv6_4(x), x),1)
         flow6 = self.predict_flow6(x)
+        import pdb;pdb.set_trace()
         up_flow6 = self.deconv6(flow6)
         up_feat6 = self.upfeat6(x)
 
