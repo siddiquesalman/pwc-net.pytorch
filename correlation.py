@@ -7,8 +7,7 @@ from torch.autograd import Variable
 class Correlation(nn.Module):
 	def __init__(self,maxdisp):
 		super(Correlation, self).__init__()
-
-	self.maxdisp = maxdisp
+		self.maxdisp = maxdisp
 
 	def forward(self, refimg_fea, targetimg_fea):
 		"""
