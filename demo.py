@@ -20,7 +20,7 @@ if __name__ == '__main__':
 	B,C,W,H = im1.shape
 	import pdb;pdb.set_trace()
 	# Build model
-	pwc = PWC_Net([2*B,W,H])
+	pwc = PWC_Net([B,W,H])
 	#pwc = PWC_Net(model_path='models/chairs-things.pytorch')
 	pwc = pwc.cuda()
 	pwc.eval()
