@@ -17,7 +17,7 @@ if __name__ == '__main__':
 	im2 = torch.from_numpy((im2/255.).astype(np.float32)).permute(2, 0, 1).unsqueeze(0)
 	im1_v = im1.cuda()
 	im2_v = im2.cuda()
-	B,C,W,H = im1.shape
+	B,C,H,W = im1.shape
 	import pdb;pdb.set_trace()
 	# Build model
 	pwc = PWC_Net([B,W,H])
